@@ -25,6 +25,12 @@ Displays E (Empty), F (Full), or a percentage for intermediate fuel levels.
 Run:
 python3 utilities/gauge.py
 
+## 4) CSV Data Cleaner (utilities/csv_clean.py)
+cleans a messy csv by trimming spaces, skipping blank rows, and filling missing cells. 
+run:
+python3 utilities/csv_clean.py
+when prompted, enter the input CSV ex:utilities/messy.csv and then an output CSV ex: utilities/cleaned.csv
+
 ### Folder Structure
 FIRST-PYTHON-PROJECT
 | 
@@ -34,3 +40,4 @@ FIRST-PYTHON-PROJECT
 |.  |-gauge.py
 |
 |-README
+
