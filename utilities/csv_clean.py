@@ -1,4 +1,5 @@
 import csv
+import string
 def clean_csv(input_file, output_file, fill_value="Unknown"):
     cleaned_rows = []
     with open(input_file, newline='')as f:
@@ -17,6 +18,7 @@ def clean_csv(input_file, output_file, fill_value="Unknown"):
             name, age, location = [c.strip() or fill_value for c in row]
             name = " ".join(name.split())
             location = " ".join(location.split())
+            location = location.strip(string.punctuation)
             import re
             digits = re.findall(r"\d+", age)
             age = digits[0] if digits else "Unknown"
