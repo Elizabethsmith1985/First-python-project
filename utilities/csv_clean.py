@@ -15,6 +15,11 @@ def clean_csv(input_file, output_file, fill_value="Unknown"):
                 continue
             row = (row + [""] * 3)[:3]
             name, age, location = [c.strip() or fill_value for c in row]
+            name = " ".join(name.split())
+            location = " ".join(location.split())
+            import re
+            digits = re.findall(r"\d+", age)
+            age = digits[0] if digits else "Unknown"
             name = name.title()
             age = age if age else fill_value
             location = location.title()
