@@ -1,7 +1,7 @@
 name,age,location
-Alice,31,Nyc
-Bob,Unknown,La
-Charlie,22,Seattle
-Anthony,18,Chichamauga
-Thomas,Unknown,Bend
-River,54,Sandy River
+alice,31,NYC
+bob,,LA
+Charlie,22,seattle
+anthony, 18, chichamauga
+thomas, , bend
+river, 54,sandy river

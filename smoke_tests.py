@@ -1,3 +1,4 @@
+from utilities.text_clean import clean_text
 from utilities.csv_clean import clean_csv
 import os
 import csv
@@ -55,3 +56,13 @@ with open(OUTPUT, newline="") as f:
         age = row[1].strip()
         assert age == "Unknown" or age.isdigit(), f"Invalid age found: {row}"
 print("OK")
+print("Running text_clean tests...")
+# create a small messy text file
+with open("utilities/messy.txt", "w", encoding="utf-8") as f:
+    f.write("   hello. \n")
+    f.write("this  is   my  messy text\n")
+clean_text("utilities/messy.txt", "utilities/cleaned.txt")
+with open("utilities/cleaned.txt", "r", encoding="utf-8") as f:
+    lines = [line.strip() for line in f.readlines()]
+assert lines == ["hello", "this is my messy text"], f"Unexpected cleaned text: {lines}"
+print("Text-clean tests passed!")
