@@ -1,5 +1,6 @@
 from utilities.text_clean import clean_text
 from utilities.csv_clean import clean_csv
+from utilities.city_counts import count_cities
 import os
 import csv
 INPUT = "utilities/messy.csv"
@@ -66,3 +67,8 @@ with open("utilities/cleaned.txt", "r", encoding="utf-8") as f:
     lines = [line.strip() for line in f.readlines()]
 assert lines == ["hello", "this is my messy text"], f"Unexpected cleaned text: {lines}"
 print("Text-clean tests passed!")
+print("Running city_counts tests...")
+counts = count_cities("utilities/cleaned.csv")
+assert counts == {"Nyc": 1, "La": 2, "Seattle": 2, "Chickamauga": 2, "Bend": 1, "Sandy River": 1, "Chicago": 1}
+f"Unexpected city counts: {counts}"
+print ("city_counts tests passed!")
