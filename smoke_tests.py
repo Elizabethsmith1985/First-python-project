@@ -1,6 +1,7 @@
 from utilities.text_clean import clean_text
 from utilities.csv_clean import clean_csv
 from utilities.city_counts import count_cities
+from utilities.duplicate_finder import find_duplicates_from_csv, find_duplicates_from_list
 import os
 import csv
 INPUT = "utilities/messy.csv"
@@ -72,3 +73,14 @@ counts = count_cities("utilities/cleaned.csv")
 assert counts == {"Nyc": 1, "La": 2, "Seattle": 2, "Chickamauga": 2, "Bend": 1, "Sandy River": 1, "Chicago": 1}
 f"Unexpected city counts: {counts}"
 print ("city_counts tests passed!")
+print("Running duplicate_finder tests...")
+test_names = {"Bob", "Bob", "Thomas", "Thomas", "Bob", "Alice"}
+result = find_duplicates_from_csv("utilities/cleaned.csv")
+print("DEBUG duplicate result from CSV:", result)
+assert result == {"Bob: 3", "Thomas: 2"}, f"Unexpected result: {result}"
+# no duplicates test 
+no_dup_names = ["Alice", "Charlie", "Candice"]
+no_dup_result = find_duplicates_from_list(no_dup_names)
+print("DEBBUG no_result:", no_dup_result)
+assert no_dup_result == {}, f"Expected no duplicates, got: {no_dup_result}"
+print ("duplicate_finder tests passed!")
